@@ -82,6 +82,9 @@ function netIncomeCalculation(){
     let netIncome = income - michiganIncomeTax - oasdiTax - medicareTax - federalTax;
     let netIncomeFormatted = formatCurrency(netIncome);
 
+    // Tax Percentage Calculation
+    let taxPercentage = Number(netIncome/income).toLocaleString(undefined,{style: 'percent', minimumFractionDigits:2});
+
     // Toggle visibility of netDemoDiv first
     // Always set the display to block when the function runs
     var netDemoDiv = document.getElementById("netdemo");
@@ -94,4 +97,5 @@ function netIncomeCalculation(){
     document.getElementById("medicareTax").innerHTML = "<strong>Medicare Withholdings:</strong> " + medicareTaxFormatted;
     document.getElementById("federalTax").innerHTML = "<strong>Federal Income Tax:</strong> " + federalTaxFormatted;
     document.getElementById("netIncome").innerHTML = "<strong>Net Income:</strong> " + netIncomeFormatted;
+    document.getElementById("taxPercentage").innerHTML = "This equates to <strong>" + taxPercentage + "</strong> of your Gross Income."
 }
